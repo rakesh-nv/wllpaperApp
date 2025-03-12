@@ -27,7 +27,7 @@ class _WallpaperState extends State<Wallpaper> {
       Uri.parse('https://api.pexels.com/v1/curated?per_page=80'),
       headers: {
         'Authorization':
-            'API',
+            'LC83iXyapona48Reut0uWtL2SzSOom9ZVwYkkXFguRScPndUzHLBXcmQ',
       },
     ).then(
       (value) {
@@ -50,7 +50,7 @@ class _WallpaperState extends State<Wallpaper> {
         'https://api.pexels.com/v1/curated?per_page=80&page=' + page.toString();
     await http.get(Uri.parse(url), headers: {
       'Authorization':
-          'API'
+          'LC83iXyapona48Reut0uWtL2SzSOom9ZVwYkkXFguRScPndUzHLBXcmQ'
     }).then((value) {
       Map result = jsonDecode(value.body);
       setState(() {
@@ -61,6 +61,11 @@ class _WallpaperState extends State<Wallpaper> {
 
   @override
   Widget build(BuildContext context) {
+    if (images == null) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     return Scaffold(
       body: Column(
         children: [
